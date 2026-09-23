@@ -17,7 +17,7 @@ const upload = multer({
 });
 
 app.use(express.json({limit:"2mb"}));
-app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname)));
 
 function cleanDuration(value) {
   const n = Number(value);
@@ -92,7 +92,7 @@ app.post("/api/generate", upload.single("media"), async (req,res) => {
 });
 
 app.get("*splat", (req,res) => {
-  res.sendFile(path.join(__dirname,"public","index.html"));
+  res.sendFile(path.join(__dirname,"index.html"));
 });
 
 app.listen(process.env.PORT || 3000, () => {
